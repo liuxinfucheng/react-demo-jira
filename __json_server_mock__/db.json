@@ -52,11 +52,13 @@
       "personId": 4,
       "organization": "外卖组",
       "created": 1546900800000
-    },
-    {
-      "username": "",
-      "passward": "",
-      "id": 6
     }
-  ]
+  ],
+  "register": {
+    "users": {
+      "id": 12342421,
+      "name": "qingyang",
+      "token": "ADFJKADF="
+    }
+  }
 }
