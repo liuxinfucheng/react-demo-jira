@@ -11,5 +11,17 @@ module.exports = (req, res, next) => {
       return res.status(400).json({ message: "用户名或者密码错误" });
     }
   }
+
+  if (req.path === "/me") {
+    if (req.query.token) {
+      return res.status(200).json({
+        user: {
+          token: "123",
+          name: req.body.username,
+        },
+      });
+    } else {
+    }
+  }
   next();
 };
