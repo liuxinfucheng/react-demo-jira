@@ -17,7 +17,7 @@ module.exports = (req, res, next) => {
       return res.status(200).json({
         user: {
           token: "123",
-          name: req.body.username,
+          name: req.query.username,
         },
       });
     } else {

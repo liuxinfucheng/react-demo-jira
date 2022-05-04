@@ -2,12 +2,10 @@ import { useEffect, useState } from "react";
 
 export const isFalse = (value: unknown) => (value === 0 ? true : !!value);
 
-export const cleanObject = (obj: object) => {
-  const result = {};
+export const cleanObject = (obj: { [key: string]: unknown }) => {
+  const result: { [key: string]: unknown } = {};
   for (const key of Object.keys(obj)) {
-    // @ts-ignore
     const value = obj[key];
-    // @ts-ignore
     if (isFalse(value)) result[key] = value;
   }
   return result;
