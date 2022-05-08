@@ -1,7 +1,7 @@
 import React from "react";
 import { User } from "screens/project-list/search-panel";
 
-interface Project {
+export interface Project {
   id: string;
   name: string;
   personId: string;

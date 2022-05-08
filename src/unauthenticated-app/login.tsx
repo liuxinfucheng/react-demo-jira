@@ -2,9 +2,15 @@ import React, { FormEvent } from "react";
 import * as qs from "qs";
 import { useAuth } from "context/auth-context";
 import { Input } from "antd";
+import { useAsync } from "utils/use-async";
 
-export const LoginScreen = () => {
+export const LoginScreen = ({
+  onError,
+}: {
+  onError: (error: Error) => void;
+}) => {
   const { login, user } = useAuth();
+  const { run, isLoading } = useAsync(undefined, { throwOnError: true });
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -13,7 +19,7 @@ export const LoginScreen = () => {
     const password = (event.currentTarget.elements[1] as HTMLInputElement)
       .value;
 
-    login({ username, password });
+    run(login({ username, password })).catch((e) => onError(e));
   };
 
   return (
