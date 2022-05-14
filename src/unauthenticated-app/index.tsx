@@ -3,10 +3,13 @@ import { LoginScreen } from "./login";
 import { RegisterScreen } from "./register";
 import styled from "@emotion/styled";
 import { Button, Typography } from "antd";
+import { useDocumentTitle } from "utils";
 
 export const UnauthenticatedApp = () => {
   const [isRegister, setIsregister] = useState(false);
   const [error, setError] = useState<Error | null>(null);
+
+  useDocumentTitle("请登录注册以继续");
 
   return (
     <Container>

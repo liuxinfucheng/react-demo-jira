@@ -1,12 +1,10 @@
 import React from "react";
-import { List, Project } from "./list";
+import { List } from "./list";
 import { SearchPanel } from "./search-panel";
-import { useEffect, useState } from "react";
-import { cleanObject, useDebounce, useMount } from "utils";
+import { useState } from "react";
+import { useDebounce, useDocumentTitle } from "utils";
 import { useProjects } from "utils/project";
 import { useUsers } from "utils/user";
-
-const apiUrl = process.env.REACT_APP_API_URL;
 
 export const ProjectListScreen = () => {
   const [param, setParam] = useState({
@@ -17,6 +15,8 @@ export const ProjectListScreen = () => {
 
   const { isLoading, error, data: list } = useProjects(debouncedParam);
   const { data: users } = useUsers();
+
+  useDocumentTitle("项目列表", false);
 
   return (
     <div>
